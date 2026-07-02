@@ -1,17 +1,17 @@
 <div align="center">
 
-# Draw.io Slide Reconstruction Skill
+# Draw.io Reconstruction Skill
 
-**A Codex skill for reconstructing presentation-style diagrams into editable Draw.io files.**
+**A Codex skill for reconstructing diagram images into editable Draw.io files.**
 
 [![arXiv](https://img.shields.io/badge/arXiv-2605.15677-b31b1b)](https://arxiv.org/abs/2605.15677)
 [![Dataset](https://img.shields.io/badge/HuggingFace-VCG--Bench-yellow)](https://huggingface.co/datasets/sxy1620348809/VCG-Bench)
 
 </div>
 
-This repository contains a Codex skill and helper scripts for converting slide-style diagram screenshots into editable `.drawio` files. It is the practical reconstruction workflow used in the VCG-Bench release examples: an agent inspects a reference image, creates a visible-element inventory, rebuilds text and structure with Draw.io primitives, uses crops or SVG where appropriate, exports a PNG preview, and verifies the result.
+This repository contains a Codex skill and helper scripts for converting reference diagram images into editable `.drawio` files. It is the practical reconstruction workflow used in the VCG-Bench release examples: an agent inspects a reference image, creates a visible-element inventory, rebuilds text and structure with Draw.io primitives, uses crops or SVG where appropriate, exports a PNG preview, and verifies the result.
 
-The companion benchmark repository is prepared separately as `VCG-Bench`. The public GitHub link will be added at release.
+The companion benchmark repository is released at https://github.com/sxy1499894281/VCG-Bench.
 
 ## What Is Included
 
@@ -64,10 +64,10 @@ Copy or symlink this repository into your Codex skills directory:
 
 ```bash
 mkdir -p ~/.codex/skills
-ln -s /path/to/drawio-slide-reconstruction ~/.codex/skills/drawio-slide-reconstruction
+ln -s /path/to/drawio-reconstruction ~/.codex/skills/drawio-reconstruction
 ```
 
-Then ask Codex to use `drawio-slide-reconstruction` for a diagram image or a folder of images.
+Then ask Codex to use `drawio-reconstruction` for a diagram image or a folder of images.
 
 ## Requirements
 
@@ -144,6 +144,7 @@ Relevant resources:
 
 - Paper: https://arxiv.org/abs/2605.15677
 - Dataset: https://huggingface.co/datasets/sxy1620348809/VCG-Bench
+- Code: https://github.com/sxy1499894281/VCG-Bench
 
 ## License
 
