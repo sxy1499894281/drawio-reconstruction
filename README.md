@@ -142,6 +142,7 @@ VCG-Bench studies visual-centric structured generation and editing with `mxGraph
 
 Relevant resources:
 
+- Homepage: https://sxy1499894281.github.io/VCG-Bench/
 - Paper: https://arxiv.org/abs/2605.15677
 - Dataset: https://huggingface.co/datasets/sxy1620348809/VCG-Bench
 - Code: https://github.com/sxy1499894281/VCG-Bench
