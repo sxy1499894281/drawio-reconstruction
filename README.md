@@ -11,7 +11,7 @@
 
 This repository contains a Codex skill and helper scripts for converting slide-style diagram screenshots into editable `.drawio` files. It is the practical reconstruction workflow used in the VCG-Bench release examples: an agent inspects a reference image, creates a visible-element inventory, rebuilds text and structure with Draw.io primitives, uses crops or SVG where appropriate, exports a PNG preview, and verifies the result.
 
-The companion benchmark repository is prepared separately as `VCG-Bench`. Add the final GitHub link here after the private repository URL is confirmed.
+The companion benchmark repository is prepared separately as `VCG-Bench`. The public GitHub link will be added at release.
 
 ## What Is Included
 
@@ -144,6 +144,10 @@ Relevant resources:
 
 - Paper: https://arxiv.org/abs/2605.15677
 - Dataset: https://huggingface.co/datasets/sxy1620348809/VCG-Bench
+
+## License
+
+This skill repository is released under the [MIT License](LICENSE).
 
 ## Citation
 
