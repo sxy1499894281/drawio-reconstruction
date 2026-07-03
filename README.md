@@ -40,7 +40,7 @@ When reproducing, use `examples/<name>.png` as the source image and export the p
 
 ## Reconstruction Cases
 
-The examples below show one-round Codex + GPT-5.5 xhigh + skill reconstruction outputs. The left image is the original diagram, and the right image is the exported PNG from the reconstructed `.drawio` file.
+The examples below show one-round Codex + GPT-5.5 xhigh + skill reconstruction outputs. The left image is the original diagram, and the right image is a README display copy of the exported PNG from the reconstructed `.drawio` file.
 
 <table>
   <tr>
@@ -129,7 +129,7 @@ python scripts/batch_verify.py path/to/output/drawio_batch_manifest.json
 Export a single `.drawio` file:
 
 ```bash
-python scripts/export_drawio.py examples/data_lake.drawio --output examples/data_lake.preview.png
+python scripts/export_drawio.py examples/data_lake.drawio examples/data_lake.preview.png
 ```
 
 Check a `.drawio` file:
