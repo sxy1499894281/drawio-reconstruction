@@ -2,6 +2,8 @@
 
 # Draw.io Reconstruction Skill
 
+[English](README.md) | [中文](README.zh-CN.md)
+
 **A Codex skill for reconstructing diagram images into editable Draw.io files, with examples strongly recommended to be reproduced using Codex + GPT-5.5 xhigh.**
 
 [![arXiv](https://img.shields.io/badge/arXiv-2605.15677-b31b1b)](https://arxiv.org/abs/2605.15677)
