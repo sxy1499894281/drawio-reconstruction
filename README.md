@@ -13,6 +13,8 @@
 
 This repository contains a Codex skill and helper scripts for converting reference diagram images into editable `.drawio` files. It is the practical reconstruction workflow used in the VCG-Bench release examples: an agent inspects a reference image, creates a visible-element inventory, rebuilds text and structure with Draw.io primitives, uses crops or SVG where appropriate, exports a PNG preview, and verifies the result. The bundled examples are packaged so others can reproduce them from the original PNG inputs. For faithful reproduction of the displayed examples, we strongly recommend using Codex + GPT-5.5 xhigh mode; weaker models or lower reasoning modes may not match the same visual fidelity.
 
+The workflow uses two lightweight, independently reviewed repair loops. One clean Icon Producer prepares the icon set and a separate Icon Reviewer accepts or rejects it. Each FIX starts a fresh repair Producer on the current artifacts, followed by a fresh Reviewer. The complete reconstruction follows the same pattern. Review evidence is split into small `icons-review*.png` and `placement-review*.png` shards (at most eight icons each), with literal 1:1/2x views and surrounding source/final context. Reviewers must return one verdict per icon; Producers never accept their own work.
+
 The companion benchmark repository is released at https://github.com/sxy1499894281/VCG-Bench.
 
 ## Recommended Reproduction Configuration
@@ -26,7 +28,7 @@ The example reconstructions in this repository are best reproduced with the foll
 
 This is the configuration we recommend for reproducing the README case images. Other runtimes, models, or lower reasoning settings can be used for experimentation, but they should not be treated as equivalent reproduction settings because they may miss small visual elements, drift in layout, or produce lower-fidelity Draw.io structure.
 
-When reproducing, use `examples/<name>.png` as the source image and export the preview to a separate file such as `examples/<name>.preview.png` so the original input remains unchanged.
+When reproducing, use `examples/<name>.png` as the source image and export the preview to a separate file such as `examples/<name>_preview.png` so the original input remains unchanged.
 
 ## What Is Included
 
@@ -120,7 +122,7 @@ For each manifest entry, the agent should create:
 
 ```text
 <stem>.drawio
-<stem>.png
+<stem>_preview.png
 <stem>.audit.md
 ```
 
@@ -133,7 +135,7 @@ python scripts/batch_verify.py path/to/output/drawio_batch_manifest.json
 Export a single `.drawio` file:
 
 ```bash
-python scripts/export_drawio.py examples/data_lake.drawio examples/data_lake.preview.png
+python scripts/export_drawio.py examples/data_lake.drawio examples/data_lake_preview.png
 ```
 
 Check a `.drawio` file:
@@ -153,6 +155,7 @@ Key quality gates:
 - Complex artwork should be cropped or carefully repaired instead of replaced by generic icons.
 - Exported PNG previews must be inspected for missing elements, crop seams, blur, and layout drift.
 - The audit file should record unresolved defects instead of claiming perfect reconstruction.
+- Icon preparation and complete-diagram review both start a fresh repair Producer on the current artifacts, followed by a different fresh read-only Reviewer.
 
 ## Relation To VCG-Bench
 

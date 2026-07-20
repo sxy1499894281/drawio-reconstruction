@@ -16,6 +16,10 @@
 配套 benchmark 仓库地址：
 https://github.com/sxy1499894281/VCG-Bench
 
+工作流包含两组独立验收的修复循环：Icon Producer 负责准备图标，另一个只读 Icon Reviewer 负责验收；完整重建同样由 Reconstruction Producer 和不同的只读 Reconstruction Reviewer 分工。每个 FIX 都会启动新的修复 Producer，修复后再启动新的 Reviewer，Producer 不能验收自己的工作。
+
+图标准备和最终嵌入验收图必须拆成小型 `icons-review*.png` / `placement-review*.png` 分片，每片最多 8 个图标，并使用真实 1:1、2x 视图及带 bbox 标记的源图/成品外围上下文。Reviewer 必须逐图标返回结论，不能只对一张超长总表笼统 PASS。
+
 ## 推荐复现配置
 
 本仓库中的示例重建，推荐使用以下参考配置：
@@ -27,7 +31,7 @@ https://github.com/sxy1499894281/VCG-Bench
 
 这是我们建议用于复现 README 案例图的配置。你也可以用其他运行时、模型或更低的推理设置来做实验，但不应把这些配置视为等价复现条件，因为它们更容易遗漏小元素、在布局上漂移，或者生成保真度更低的 Draw.io 结构。
 
-复现时，建议把 `examples/<name>.png` 作为源图，并把导出预览图写到单独文件，例如 `examples/<name>.preview.png`，这样不会覆盖原始输入。
+复现时，建议把 `examples/<name>.png` 作为源图，并把导出预览图写到单独文件，例如 `examples/<name>_preview.png`，这样不会覆盖原始输入。
 
 ## 仓库内容
 
@@ -121,7 +125,7 @@ python scripts/batch_manifest.py path/to/images --output-dir path/to/output --wr
 
 ```text
 <stem>.drawio
-<stem>.png
+<stem>_preview.png
 <stem>.audit.md
 ```
 
@@ -134,7 +138,7 @@ python scripts/batch_verify.py path/to/output/drawio_batch_manifest.json
 导出单个 `.drawio` 文件：
 
 ```bash
-python scripts/export_drawio.py examples/data_lake.drawio examples/data_lake.preview.png
+python scripts/export_drawio.py examples/data_lake.drawio examples/data_lake_preview.png
 ```
 
 检查单个 `.drawio` 文件：
