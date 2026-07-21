@@ -23,12 +23,12 @@ The example reconstructions in this repository are best reproduced with the foll
 
 - Runtime: Codex
 - Model/mode: GPT-5.5 xhigh
-- Input: the original PNG files in `examples/`
+- Input: the original image files (PNG/JPG) in `examples/`
 - Output: editable `.drawio` files plus exported preview PNGs
 
 This is the configuration we recommend for reproducing the README case images. Other runtimes, models, or lower reasoning settings can be used for experimentation, but they should not be treated as equivalent reproduction settings because they may miss small visual elements, drift in layout, or produce lower-fidelity Draw.io structure.
 
-When reproducing, use `examples/<name>.png` as the source image and export the preview to a separate file such as `examples/<name>_preview.png` so the original input remains unchanged.
+When reproducing, use the original image file in `examples/` as the source and export the preview to a separate file such as `examples/<name>_preview.png` so the original input remains unchanged.
 
 ## What Is Included
 
@@ -41,17 +41,21 @@ When reproducing, use `examples/<name>.png` as the source image and export the p
 | `scripts/export_drawio.py` | Export `.drawio` files to PNG using Draw.io Desktop/CLI. |
 | `scripts/crop_assist.py` | Assist with extracting image crops from complex reference diagrams. |
 | `agents/openai.yaml` | Example agent configuration metadata. |
-| `examples/` | Original PNG inputs and example reconstructed `.drawio` files. |
+| `examples/` | Original PNG/JPG inputs and example reconstructed `.drawio` files. |
 | `assets/` | README case images. |
 
 ## Reconstruction Cases
 
-The examples below show one-round Codex + GPT-5.5 xhigh + skill reconstruction outputs. The left image is the original diagram, and the right image is a README display copy of the exported PNG from the reconstructed `.drawio` file.
+The examples below show Codex + GPT-5.5 xhigh + skill reconstruction outputs after the required independent repair/review loops. The left image is the original diagram, and the right image is a README display copy of the exported PNG from the reconstructed `.drawio` file.
 
 <table>
   <tr>
     <th width="50%">Original</th>
     <th width="50%">Reconstructed Draw.io Export</th>
+  </tr>
+  <tr>
+    <td><img src="assets/cases/data_cn_original.png" alt="Chinese data-analysis workflow original"></td>
+    <td><img src="assets/cases/data_cn_drawio.png" alt="Chinese data-analysis workflow reconstructed Draw.io export"></td>
   </tr>
   <tr>
     <td><img src="assets/cases/data_lake_original.png" alt="Data lake original"></td>
@@ -65,17 +69,37 @@ The examples below show one-round Codex + GPT-5.5 xhigh + skill reconstruction o
     <td><img src="assets/cases/data_sci2_original.png" alt="Scientific data original"></td>
     <td><img src="assets/cases/data_sci2_drawio.png" alt="Scientific data reconstructed Draw.io export"></td>
   </tr>
+  <tr>
+    <td><img src="assets/cases/m1_original.png" alt="Biogeochemical process original"></td>
+    <td><img src="assets/cases/m1_drawio.png" alt="Biogeochemical process reconstructed Draw.io export"></td>
+  </tr>
+  <tr>
+    <td><img src="assets/cases/m2_original.png" alt="Treatment selection matrix original"></td>
+    <td><img src="assets/cases/m2_drawio.png" alt="Treatment selection matrix reconstructed Draw.io export"></td>
+  </tr>
+  <tr>
+    <td><img src="assets/cases/m3_original.png" alt="Low-temperature nitrogen removal original"></td>
+    <td><img src="assets/cases/m3_drawio.png" alt="Low-temperature nitrogen removal reconstructed Draw.io export"></td>
+  </tr>
 </table>
 
 Example source images and editable outputs are available at:
 
 ```text
+examples/data_cn.jpg
+examples/data_cn.drawio
 examples/data_lake.png
 examples/data_lake.drawio
 examples/data_man.png
 examples/data_man.drawio
 examples/data_sci2.png
 examples/data_sci2.drawio
+examples/m1.png
+examples/m1.drawio
+examples/m2.png
+examples/m2.drawio
+examples/m3.png
+examples/m3.drawio
 ```
 
 ## Installation As A Codex Skill

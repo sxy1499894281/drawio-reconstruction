@@ -26,12 +26,12 @@ https://github.com/sxy1499894281/VCG-Bench
 
 - Runtime：Codex
 - Model / mode：GPT-5.5 xhigh
-- 输入：`examples/` 目录中的原始 PNG
+- 输入：`examples/` 目录中的原始图片（PNG/JPG）
 - 输出：可编辑的 `.drawio` 文件和导出的 PNG 预览图
 
 这是我们建议用于复现 README 案例图的配置。你也可以用其他运行时、模型或更低的推理设置来做实验，但不应把这些配置视为等价复现条件，因为它们更容易遗漏小元素、在布局上漂移，或者生成保真度更低的 Draw.io 结构。
 
-复现时，建议把 `examples/<name>.png` 作为源图，并把导出预览图写到单独文件，例如 `examples/<name>_preview.png`，这样不会覆盖原始输入。
+复现时，建议使用 `examples/` 中对应的原始图片作为源图，并把导出预览图写到单独文件，例如 `examples/<name>_preview.png`，这样不会覆盖原始输入。
 
 ## 仓库内容
 
@@ -44,17 +44,21 @@ https://github.com/sxy1499894281/VCG-Bench
 | `scripts/export_drawio.py` | 通过 Draw.io Desktop/CLI 将 `.drawio` 导出为 PNG。 |
 | `scripts/crop_assist.py` | 辅助从复杂参考图中裁出局部图像。 |
 | `agents/openai.yaml` | 示例 agent 配置元数据。 |
-| `examples/` | 原始 PNG 输入，以及对应的示例 `.drawio` 文件。 |
+| `examples/` | 原始 PNG/JPG 输入，以及对应的示例 `.drawio` 文件。 |
 | `assets/` | README 中展示案例所需的图片资源。 |
 
 ## 重建案例
 
-下面的示例展示的是单轮 Codex + GPT-5.5 xhigh + skill 的重建结果。左侧是原始图，右侧是由重建后的 `.drawio` 导出的 PNG，并作为 README 展示图使用。
+下面的示例展示的是 Codex + GPT-5.5 xhigh + skill 在完成规定的独立修复与审查循环后的重建结果。左侧是原始图，右侧是由重建后的 `.drawio` 导出的 PNG，并作为 README 展示图使用。
 
 <table>
   <tr>
     <th width="50%">原图</th>
     <th width="50%">重建后的 Draw.io 导出图</th>
+  </tr>
+  <tr>
+    <td><img src="assets/cases/data_cn_original.png" alt="Chinese data-analysis workflow original"></td>
+    <td><img src="assets/cases/data_cn_drawio.png" alt="Chinese data-analysis workflow reconstructed Draw.io export"></td>
   </tr>
   <tr>
     <td><img src="assets/cases/data_lake_original.png" alt="Data lake original"></td>
@@ -68,17 +72,37 @@ https://github.com/sxy1499894281/VCG-Bench
     <td><img src="assets/cases/data_sci2_original.png" alt="Scientific data original"></td>
     <td><img src="assets/cases/data_sci2_drawio.png" alt="Scientific data reconstructed Draw.io export"></td>
   </tr>
+  <tr>
+    <td><img src="assets/cases/m1_original.png" alt="Biogeochemical process original"></td>
+    <td><img src="assets/cases/m1_drawio.png" alt="Biogeochemical process reconstructed Draw.io export"></td>
+  </tr>
+  <tr>
+    <td><img src="assets/cases/m2_original.png" alt="Treatment selection matrix original"></td>
+    <td><img src="assets/cases/m2_drawio.png" alt="Treatment selection matrix reconstructed Draw.io export"></td>
+  </tr>
+  <tr>
+    <td><img src="assets/cases/m3_original.png" alt="Low-temperature nitrogen removal original"></td>
+    <td><img src="assets/cases/m3_drawio.png" alt="Low-temperature nitrogen removal reconstructed Draw.io export"></td>
+  </tr>
 </table>
 
 示例输入图和可编辑输出位于：
 
 ```text
+examples/data_cn.jpg
+examples/data_cn.drawio
 examples/data_lake.png
 examples/data_lake.drawio
 examples/data_man.png
 examples/data_man.drawio
 examples/data_sci2.png
 examples/data_sci2.drawio
+examples/m1.png
+examples/m1.drawio
+examples/m2.png
+examples/m2.drawio
+examples/m3.png
+examples/m3.drawio
 ```
 
 ## 作为 Codex Skill 安装
